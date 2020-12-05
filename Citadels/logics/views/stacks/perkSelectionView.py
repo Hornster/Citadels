@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QApplication, QTabWidget, QWidget, QShortcut, QMainW
 from PyQt5.QtWidgets import QGridLayout, QPushButton, QRadioButton, QLabel, QVBoxLayout
 from data.labels import Labels
 
-class PerkSelectionStack(QWidget):
+class PerkSelectionView(QWidget):
     def __init__(self, whatPlayer, parent = None):
         super().__init__(parent=parent)
         

@@ -1,8 +1,8 @@
 
 
 from PyQt5.QtWidgets import QApplication, QTabWidget, QWidget, QShortcut, QMainWindow, QHBoxLayout, QLayout
-from StackManager import StackManager
-from enums.enums import StackTypeLocal, StackTypeLan, GameplayTypeEnum
+from ViewManager import ViewManager
+from enums.enums import ViewTypeLocal, ViewTypeLan, ViewManagerTypeEnum
 import sys
 
 #https://www.tutorialspoint.com/pyqt/pyqt_qstackedwidget.htm
@@ -17,9 +17,8 @@ class MainWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
         
-        self.stackManager = StackManager(self, GameplayTypeEnum.LOCAL)
+        self.stackManager = ViewManager(self, ViewManagerTypeEnum.MODE_SELECTION)
 
-        self.stackManager.ChangeStack(StackTypeLocal.LOCAL_TURN_P1)
         hBox = QHBoxLayout(self)
         hBox.addWidget(self.stackManager)
         #hBox.removeWidget(self.stackManager)
@@ -29,8 +28,8 @@ class MainWindow(QWidget):
         self.setGeometry(self.xPos, self.yPos, self.width, self.height)
         self.setWindowTitle("Citadels")
         #Set stacks manager as central widget.
-    def GetStackManager(type: GameplayTypeEnum):
-        return StackManager(type)
+    def GetViewManager(type: ViewManagerTypeEnum):
+        return ViewManager(type)
 
 if __name__ == '__main__':
     

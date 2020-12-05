@@ -28,10 +28,25 @@
     <Compile Include="enums\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="logics\views\stacks\local\TurnStack.py">
+    <Compile Include="logics\controllers\viewsController.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="logics\views\stacks\perkSelectionStack.py">
+    <Compile Include="logics\views\stacks\awaitOtherPlayerView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\views\stacks\gameplaySelection\gameModeSelectView.py" />
+    <Compile Include="logics\views\stacks\gameplaySelection\hostModeIniView.py" />
+    <Compile Include="logics\views\stacks\gameplaySelection\joinGameView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\views\stacks\gameplaySelection\lanModeSelection.py" />
+    <Compile Include="logics\views\stacks\gameplaySelection\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\views\stacks\TurnView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\views\stacks\perkSelectionView.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="logics\views\__init__.py">
@@ -43,10 +58,7 @@
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="logics\views\stacks\gameModeSelectStack.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StackManager.py">
+    <Compile Include="ViewManager.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="logics\views\stacks\__init__.py">
@@ -65,10 +77,11 @@
   <ItemGroup>
     <Folder Include="enums\" />
     <Folder Include="logics\" />
+    <Folder Include="logics\controllers\" />
     <Folder Include="logics\views\" />
     <Folder Include="logics\views\stacks\" />
-    <Folder Include="logics\views\stacks\local\" />
     <Folder Include="data\" />
+    <Folder Include="logics\views\stacks\gameplaySelection\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

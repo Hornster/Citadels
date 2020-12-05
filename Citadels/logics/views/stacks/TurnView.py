@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QGridLayout, QPushButton, QRadioButton, QLabel, QVBo
 from data.labels import Labels
 
 #View that allows the player to select next move.
-class TurnStack(QWidget):
+class TurnView(QWidget):
     def __init__(self, whatPlayer, parent = None):
         super().__init__(parent=parent)
         
@@ -74,6 +74,7 @@ class TurnStack(QWidget):
         defensiveLayout.addWidget(self.flakBatteryRadioButton, 4, 1, 1, 1)
 
         return defensiveLayout
+    #Creates set of controls that show current health of the player and their opponent.
     def __CreateHealthState(self):
         self.myHealthBar = QProgressBar()
         self.myHealthBarDesc = QLabel("Your Citadel Hull Integrity:")
@@ -83,7 +84,7 @@ class TurnStack(QWidget):
         
         layout = QGridLayout()
         layout.addWidget(self.myHealthBarDesc, 1, 1, 1, 1)
-        layout.addWidget(self.myHealthBar, 1, 2, 1, 1)
+        layout.addWidget(self.myHealthBar, 2, 1, 1, 1)
 
         layout.addWidget(self.enemyHealthBarDesc, 1, 2, 1, 1)
         layout.addWidget(self.enemyHealthBar, 2, 2, 1, 1)
