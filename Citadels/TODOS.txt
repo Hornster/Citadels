@@ -1,0 +1,3 @@
+#TODO: Prepare such controller for every view.
+#TODO: Prepare stack widget switching
+#TODO: Prepare proper widgets calling and switching

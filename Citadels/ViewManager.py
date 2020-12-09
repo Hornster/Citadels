@@ -37,6 +37,8 @@ class ViewManager(QStackedWidget):
 
     def ChangeView(self, newView):
         self.setCurrentIndex(newView)
+    def ChangeViewStack(self, type: ViewManagerTypeEnum):
+        self.wid
 
 
 

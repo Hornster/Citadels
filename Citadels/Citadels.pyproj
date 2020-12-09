@@ -25,10 +25,34 @@
     <Compile Include="data\labels.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\PlayerData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="enums\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="logics\controllers\viewsController.py">
+    <Compile Include="events\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\controllers\LocalMatchController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\controllers\viewControllers\perkSelectionController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\controllers\viewsCreator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\controllers\viewControllers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\controllers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logics\turnController.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="logics\views\stacks\awaitOtherPlayerView.py">
@@ -78,10 +102,15 @@
     <Folder Include="enums\" />
     <Folder Include="logics\" />
     <Folder Include="logics\controllers\" />
+    <Folder Include="logics\controllers\viewControllers\" />
     <Folder Include="logics\views\" />
     <Folder Include="logics\views\stacks\" />
     <Folder Include="data\" />
     <Folder Include="logics\views\stacks\gameplaySelection\" />
+    <Folder Include="events\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TODOS.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
