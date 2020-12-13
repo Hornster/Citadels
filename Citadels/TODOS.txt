@@ -1,3 +1,16 @@
 #TODO: Prepare such controller for every view.
 #TODO: Prepare stack widget switching
 #TODO: Prepare proper widgets calling and switching
+
+#Notes:
+ViewControllers know about their views. They communicate directly with them.
+Views communicate with ViewControllers via events.
+
+ViewControllers know about MatchController. Communicate directly with it.
+MatchController doesn't know about ViewControllers.
+
+MatchControllers know about the ViewManager. Communicate with it directly.
+ViewManager doesn't know about MatchControllers.
+
+GameControllers doesn't know about MainWindow. These communicate with MainWindow via Events.
+MainWindow does know about GameControllers.

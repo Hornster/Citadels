@@ -6,10 +6,10 @@ from enums.enums import OffensivePerkEnum, DefensivePerkEnum
 class PerkSelectionView(QWidget):
     def __init__(self, whatPlayer, parent = None):
         super().__init__(parent=parent)
-        
+
         #Selected perks information will be stored here.
-        self.selectedDefPerk
-        self.selectedOffensivePerk
+        self.selectedDefPerk = 0
+        self.selectedOffensivePerk = 0
 
         self.mainLayout = QGridLayout()
 
@@ -26,7 +26,7 @@ class PerkSelectionView(QWidget):
         self.countersTip = QLabel(Labels.COUNTERS_TIP)
         
         self.nextButton = QPushButton("Ready!")
-        self.nextButton.click.connect(self.__OnPerksApproved)
+        self.nextButton.clicked.connect(self.__OnPerksApproved)
         
         self.mainLayout.addWidget(self.playerNote, 1, 2, 1, 1)
         self.mainLayout.addWidget(self.countersTip, 2, 2, 1, 1)
@@ -36,7 +36,7 @@ class PerkSelectionView(QWidget):
 
         self.setLayout(self.mainLayout)
 
-        self.__perkSelectionListener #Will be called like a function when player confirms selection of perks.
+        self.__perkSelectionListener = 0 #Will be called like a function when player confirms selection of perks.
         
     #Initializes controls that are used to select offensive perks of the station in the game.
     #Returns fully setup offensive area layout.
@@ -50,9 +50,9 @@ class PerkSelectionView(QWidget):
         self.siegeFleetEffortRadioButton = QRadioButton(Labels.SIEGE_FLEET_EFFORT)
         self.FighterFleetEffortRadioButton = QRadioButton(Labels.FIGHTER_FLEET_EFFORT)
 
-        self.artilleryEffortRadioButton.click.connect(self.__OnArtilleryEffortBtnClick)
-        self.siegeFleetEffortRadioButton.click.connect(self.__OnSiegeEffortBtnClick)
-        self.FighterFleetEffortRadioButton.click.connect(self.__OnFighterEffortBtnClick)
+        self.artilleryEffortRadioButton.clicked.connect(self.__OnArtilleryEffortBtnClick)
+        self.siegeFleetEffortRadioButton.clicked.connect(self.__OnSiegeEffortBtnClick)
+        self.FighterFleetEffortRadioButton.clicked.connect(self.__OnFighterEffortBtnClick)
 
         self.artilleryEffortRadioButton.click()
         #descriptions for above radiobuttons
@@ -85,9 +85,9 @@ class PerkSelectionView(QWidget):
         self.magFieldAmplifyRadioButton = QRadioButton(Labels.AMPLIFY_MAG_FIELD)
         self.expTargetingArrayRadioButton = QRadioButton(Labels.EXP_TARGETING_ARRAY)
 
-        self.fusionReactorsOverloadRadioButton.click.connect(self.__OnFusionReactorsBtnClick)
-        self.magFieldAmplifyRadioButton.click.connect(self.__OnMagFieldAmplifyBtnClick)
-        self.expTargetingArrayRadioButton.click.connect(self.__OnExpTargetingArrayBtnClick)
+        self.fusionReactorsOverloadRadioButton.clicked.connect(self.__OnFusionReactorsBtnClick)
+        self.magFieldAmplifyRadioButton.clicked.connect(self.__OnMagFieldAmplifyBtnClick)
+        self.expTargetingArrayRadioButton.clicked.connect(self.__OnExpTargetingArrayBtnClick)
 
         self.fusionReactorsOverloadRadioButton.click()
         #descriptions for above radiobuttons
@@ -109,26 +109,27 @@ class PerkSelectionView(QWidget):
 
         return defensivePerkLayout
 
-    def __OnArtilleryEffortBtnClick():
+    def __OnArtilleryEffortBtnClick(self):
         self.selectedOffensivePerk = OffensivePerkEnum.ARTILLERY_EFFORT
-    def __OnSiegeEffortBtnClick():
+    def __OnSiegeEffortBtnClick(self):
         self.selectedOffensivePerk = OffensivePerkEnum.SIEGE_FLEET_EFFORT
-    def __OnFighterEffortBtnClick():
+    def __OnFighterEffortBtnClick(self):
         self.selectedOffensivePerk = OffensivePerkEnum.FIGHTER_FLEET_EFFORT
 
-    def __OnFusionReactorsBtnClick():
+    def __OnFusionReactorsBtnClick(self):
         self.selectedDefPerk = DefensivePerkEnum.FUSION_REACTORS_OVERLOAD
-    def __OnMagFieldAmplifyBtnClick():
+    def __OnMagFieldAmplifyBtnClick(self):
         self.selectedDefPerk = DefensivePerkEnum.MAG_FIELD_AMPLIFICATION
-    def __OnExpTargetingArrayBtnClick():
+    def __OnExpTargetingArrayBtnClick(self):
         self.selectedDefPerk = DefensivePerkEnum.EXPERIMENTAL_TARGETTING_ARRAY
 
     #Upon approving selection, will pass the data down to logic so it can be remembered and used.
-    def __OnPerksApproved():
+    def __OnPerksApproved(self):
         self.__perkSelectionListener(self.selectedOffensivePerk, self.selectedDefPerk)
+
     #Used to register a single listener for the perk selection confirmation event.
     #The event handler must accept two values as params:
     #OffensivePerkEnum
     #DefensivePerkEnum
-    def RegisterPerkSelectionListener(listener):
+    def RegisterPerkSelectionListener(self, listener):
         self.__perkSelectionListener = listener
