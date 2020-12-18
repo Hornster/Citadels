@@ -1,19 +1,23 @@
 
-from enums.enums import OffensivePerkEnum, DefensivePerkEnum
+from enums.enums import OffensivePerkEnum, DefensivePerkEnum, PlayersEnum
 from logics.controllers.viewControllers.PerkViewControllerBase import PerkViewControllerBase
 from logics.views.stacks.perkSelectionView import PerkSelectionView
 from logics.controllers.LocalMatchController import LocalMatchController
 
 
-class PerkSelectionController(PerkViewControllerBase):
-    def __init__(self, perkSelectionView: PerkSelectionView, matchController, nextView):
-        super.__init__()
+class PerkSelectionController():
+    def __init__(self, whatPlayer: PlayersEnum,  perkSelectionView: PerkSelectionView, matchController, nextView):
+        self.nextView = nextView
+        self.whatPlayer = whatPlayer
         self.perkSelectionView = perkSelectionView
-        self.RegisterSelectedPerksListener(self.ParsePerks)
-        self.selectedPerkHandler #Stores call to match controller. Called to inform about what perks have been chosen.
+        self.perkSelectionView.RegisterPerkSelectionListener(self.ParsePerks)
         self.__matchController = matchController
+        self.__matchController.RegisterViewStateResetHandler(self.__ResetViewState)
 
 
     def ParsePerks(self, selectedOffensivePerk: OffensivePerkEnum, selectedDefPerk: DefensivePerkEnum):
-        self.__matchController(selectedOffensivePerk, selectedDefPerk)
+        self.__matchController.PlayerPerkSelected(self.whatPlayer, selectedOffensivePerk, selectedDefPerk)
+        self.__matchController.ChangeView(self.nextView)
 
+    def __ResetViewState(self):
+        self.perkSelectionView.ResetState()

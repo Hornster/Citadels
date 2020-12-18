@@ -1,6 +1,8 @@
-#TODO: Prepare such controller for every view.
-#TODO: Prepare stack widget switching
-#TODO: Prepare proper widgets calling and switching
+#TODO: Prepare such controller for every view.      done
+#TODO: Prepare stack widget switching               done
+#TODO: Prepare proper widgets calling and switching done
+#TODO: View controllers for turns shall register for health change event
+#TODO: Match controller upon seeing switching window to P1Turn shall check victory conditions and call calculations
 
 #Notes:
 ViewControllers know about their views. They communicate directly with them.

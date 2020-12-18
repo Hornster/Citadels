@@ -7,9 +7,9 @@ from enums.enums import ViewTypeGameplaySelection
 
 #View that allows the player to setup a host on their machine.
 class HostModeIniView(QWidget):
-    def __init__(self, changeViewFunc, parent = None):
+    def __init__(self, parent = None):
         super().__init__(parent=parent)
-        self.__changeViewFunc = changeViewFunc;
+        self.__changeViewFunc = 0
         self.mainLayout = QGridLayout()
 
         self.backButton = QPushButton("Back")
@@ -28,3 +28,7 @@ class HostModeIniView(QWidget):
         self.setLayout(self.mainLayout)
     def __onBackButtonClick(self):
         self.__changeViewFunc(ViewTypeGameplaySelection.LAN_TYPE_SELECTION)
+
+    #The function should accept one argument for view type.
+    def RegisterViewSwitchHandler(self, handler):
+        self.__changeViewFunc = handler

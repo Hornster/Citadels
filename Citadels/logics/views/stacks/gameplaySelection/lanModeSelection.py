@@ -6,9 +6,9 @@ from enums.enums import ViewTypeGameplaySelection
 #View that allows the player to setup a host on their machine.
 #ChangeViewFunc: function argument that accepts ViewTypeGameplaySelection enum.
 class LanModeSelection(QWidget):
-    def __init__(self, changeViewFunc, parent = None):
+    def __init__(self, parent = None):
         super().__init__(parent=parent)
-        self.__changeViewFunc = changeViewFunc;
+        self.__changeViewFunc = 0
         self.mainLayout = QGridLayout()
 
         self.hostButton = QPushButton("Host game")
@@ -34,3 +34,7 @@ class LanModeSelection(QWidget):
     #Called upon pressing the join game button. Leads to connection with server settings view.
     def __onClientGameButtonClick(self):
         self.__changeViewFunc(ViewTypeGameplaySelection.CLIENT)
+
+    # The function should accept one argument for view type.
+    def RegisterViewSwitchHandler(self, handler):
+        self.__changeViewFunc = handler

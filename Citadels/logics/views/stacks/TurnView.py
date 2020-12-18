@@ -1,11 +1,16 @@
 
 from PyQt5.QtWidgets import QApplication, QTabWidget, QWidget, QShortcut, QMainWindow, QStackedWidget
 from PyQt5.QtWidgets import QGridLayout, QPushButton, QRadioButton, QLabel, QVBoxLayout, QProgressBar
+
+from data.PlayerNames import PlayerNames
 from data.labels import Labels
 from enums.enums import OffensiveActionEnum, DefensiveActionEnum
 
 #View that allows the player to select next move.
 class TurnView(QWidget):
+    progressBarMax = 100
+    progressBarMin = 0
+
     def __init__(self, whatPlayer, parent = None):
         super().__init__(parent=parent)
 
@@ -26,17 +31,20 @@ class TurnView(QWidget):
         citadelStateWidget.setLayout(citadelStateLayout)
         
         self.__whatPlayer = whatPlayer
-        self.playerNote = QLabel(whatPlayer)
+        playerName = PlayerNames.GetPlayerName(whatPlayer)
+        self.playerNote = QLabel(playerName)
 
         self.countersTip = QLabel(Labels.COUNTERS_TIP)
+        self.nextButton = QPushButton("Ready!")
         
         self.mainLayout.addWidget(self.playerNote, 1, 1, 1, 1)
         self.mainLayout.addWidget(self.countersTip, 2, 1, 1, 1)
         self.mainLayout.addWidget(citadelStateWidget, 3, 1, 1, 2)
         self.mainLayout.addWidget(offensiveLayoutWidget, 4, 1, 2, 3)
         self.mainLayout.addWidget(defensiveLayoutWidget, 4, 2, 2, 3)
-        
-        self.nextButton = QPushButton("Ready!")
+        self.mainLayout.addWidget(self.nextButton, 5, 4, 1, 1)
+
+        self.nextButton.clicked.connect(self.__OnSelectionApproved)
 
         self.setLayout(self.mainLayout)
 
@@ -95,9 +103,13 @@ class TurnView(QWidget):
     def __CreateHealthState(self):
         self.myHealthBar = QProgressBar()
         self.myHealthBarDesc = QLabel("Your Citadel Hull Integrity:")
+        self.myHealthBar.setMaximum(TurnView.progressBarMax)
+        self.myHealthBar.setMinimum(TurnView.progressBarMin)
 
         self.enemyHealthBar=QProgressBar()
         self.enemyHealthBarDesc = QLabel("Enemy Citadel Hull Integrity")
+        self.enemyHealthBar.setMaximum(TurnView.progressBarMax)
+        self.enemyHealthBar.setMinimum(TurnView.progressBarMin)
         
         layout = QGridLayout()
         layout.addWidget(self.myHealthBarDesc, 1, 1, 1, 1)
@@ -125,9 +137,32 @@ class TurnView(QWidget):
     def __OnSelectionApproved(self):
         self.__actionSelectionListener(self.selectedOffensiveAction, self.selectedDefAction)
 
+    def CalculateFillValue(self, fillPercentage):
+        fill = fillPercentage * TurnView.progressBarMax
+
+        if(fill < TurnView.progressBarMin):
+            fill = TurnView.progressBarMin
+
+        return fill
+
     # Registers handler for the selection confirmation event.
     # Provided handler must have arguments:
     # OffensiveActionEnum
     # DefensiveActionEnum
     def RegisterOnActionConfirmed(self, handler):
         self.__actionSelectionListener = handler
+
+    def SetMyHealthBarValue(self, myFillPercentage: float):
+        myFill = self.CalculateFillValue(myFillPercentage)
+
+        self.myHealthBar.setValue(myFill)
+
+    def SetEnemyHealthBarValue(self, enemyFillPercentage: float):
+        enemyFill = self.CalculateFillValue(enemyFillPercentage)
+
+        self.enemyHealthBar.setValue(enemyFill)
+
+    # Resets the state of the view by clicking the selected by default controls
+    def ResetState(self):
+        self.artilleryRadioButton.click()
+        self.thorFlechetteRadioButton.click()

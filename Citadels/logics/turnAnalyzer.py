@@ -3,7 +3,8 @@ from data.PlayerData import PlayerData
 from enums.enums import DefensiveActionEnum, DefensivePerkEnum, OffensiveActionEnum, OffensivePerkEnum, TurnResultEnum
 
 #Calculations for every turn end taking into account players' choices.
-class TurnController():
+class TurnAnalyzer():
+    instance = 0
     buffStrength = 0.2 #Used to boost power, in percents.
     debuffStrength = -0.2   #Used to weaken power, in percents. 
     baseDefensePower = 0.8 #base defense power. How much damage is ignored, in percents.
@@ -64,47 +65,56 @@ class TurnController():
             OffensiveActionEnum.THOR_HAMMER : baseMinorMismatchDefensePower,
             }
         }
-    def __init__():
-        self.baseAttackPower = 1.0  #base attack power of the players, for every piece of equipment.
-        
-    #Used to calculate the results of current turn. Returns value of type
+    def __init__(self):
+        self.baseAttackPower = 1.0  # base attack power of the players, for every piece of equipment.
+        TurnAnalyzer.instance = self
+
+    @staticmethod
+    def GetInstance():
+        return TurnAnalyzer.instance
+
+    # Used to calculate the results of current turn. Returns value of type
     # TurnResultEnum, which indicates whether has the round ended (and who won) or is it still going.
-    def CalculateTurn(p1Data: PlayerData, p2Data: PlayerData):
-        p1AttackPower = __CalculateAttackPower(p1Data)
-        p1DefensePower = __CalculateDefensePower(p1Data)
+    def CalculateTurn(self, p1Data: PlayerData, p2Data: PlayerData):
+        p1AttackPower = self.__CalculateAttackPower(p1Data)
+        p1DefensePower =  self.__CalculateDefensePower(p2Data, p1Data)
 
-        p2AttackPower = __CalculateAttackPower(p1Data)
-        p2DefensePower = __CalculateDefensePower(p2Data)
+        p2AttackPower =  self.__CalculateAttackPower(p2Data)
+        p2DefensePower =  self.__CalculateDefensePower(p1Data, p2Data)
 
-        p1AttackValue = __CalculateAttackValue(p1AttackPower, p2DefensePower)
-        p2AttackValue = __CalculateAttackValue(p2AttackValue, p1DefensePower)
+        p1AttackValue =  self.__CalculateAttackValue(p1AttackPower, p2DefensePower)
+        p2AttackValue =  self.__CalculateAttackValue(p2AttackPower, p1DefensePower)
 
         p1Data.TakeDamage(p2AttackValue)
         p2Data.TakeDamage(p1AttackValue)
 
-        return __CheckVictoryConditions(p1Data, p2Data)
-    #Calculates attack power for provided player.
-    def __CalculateAttackPower(playerData: PlayerData):
-        attackPowerMultiplier = 1 + __attackMultipliersByPerk[playerData.offensiveAction][playerData.offensivePerkEnum]
+        return self.__CheckVictoryConditions(p1Data, p2Data)
+
+    # Calculates attack power for provided player.
+    def __CalculateAttackPower(self, playerData: PlayerData):
+        attackPowerMultiplier = 1 +  self.__attackMultipliersByPerk[playerData.offensiveActionEnum][playerData.offensivePerkEnum]
         attackPower = self.baseAttackPower * attackPowerMultiplier
         return attackPower
-    #Calculates defense power for provided defender, basing on attacker's selection.
-    def __CalculateDefensePower(attacker : PlayerData, defender : PlayerData):
-        baseDefEfficiency = __defenseEfficiencyByAttackType[defender.defensiveAction][attacker.offensiveAction]
-        defEfficiencyMultiplier = __defenseMultipliersByPerk[defender.defensiveAction][defender.defensivePerkEnum]
+
+    # Calculates defense power for provided defender, basing on attacker's selection.
+    def __CalculateDefensePower(self, attacker : PlayerData, defender : PlayerData):
+        baseDefEfficiency =  self.__defenseEfficiencyByAttackType[defender.defensiveActionEnum][attacker.offensiveActionEnum]
+        defEfficiencyMultiplier =  self.__defenseMultipliersByPerk[defender.defensiveActionEnum][defender.defensivePerkEnum]
         defenseValue = baseDefEfficiency * (1 + defEfficiencyMultiplier)
         return defenseValue
-    #Returns attack power reduced by defense power. Defense power tells by how much percent will
-    #the attack power be reduced.
-    def __CalculateAttackValue(attackPower, defensePower):
+
+    # Returns attack power reduced by defense power. Defense power tells by how much percent will
+    # the attack power be reduced.
+    def __CalculateAttackValue(self, attackPower, defensePower):
         return attackPower * (1 - defensePower)
-    #Checks if either of the players ran out of hp, and returns conclusion.
-    def __CheckVictoryConditions(p1Data: PlayerData, p2Data: PlayerData):
-       if (p1Data.health <= 0 and p2Data.health <= 0):
-           return TurnResult.DRAW
-       elif (p1Data.health <= 0):
-           return TurnResult.P2_WINS
-       elif (p2Data.health <= 0):
-           return TurnResult.P1_WINS
-       else:
-           return TurnResult.CONTINUE 
+
+    # Checks if either of the players ran out of hp, and returns conclusion.
+    def __CheckVictoryConditions(self, p1Data: PlayerData, p2Data: PlayerData):
+        if (p1Data.health <= 0 and p2Data.health <= 0):
+            return TurnResultEnum.DRAW
+        elif (p1Data.health <= 0):
+            return TurnResultEnum.P2_WINS
+        elif (p2Data.health <= 0):
+            return TurnResultEnum.P1_WINS
+        else:
+            return TurnResultEnum.CONTINUE

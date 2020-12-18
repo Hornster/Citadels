@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QTabWidget, QWidget, QShortcut, QMainWindow, QStackedWidget
 from PyQt5.QtWidgets import QGridLayout, QPushButton, QRadioButton, QLabel, QVBoxLayout
+
+from data.PlayerNames import PlayerNames
 from data.labels import Labels
 from enums.enums import OffensivePerkEnum, DefensivePerkEnum
 
@@ -22,7 +24,8 @@ class PerkSelectionView(QWidget):
         defensiveLayoutWidget.setLayout(defensivePerkLayout)
         
         self.__whatPlayer = whatPlayer
-        self.playerNote = QLabel(whatPlayer)
+        playerName = PlayerNames.GetPlayerName(whatPlayer)
+        self.playerNote = QLabel(playerName)
         self.countersTip = QLabel(Labels.COUNTERS_TIP)
         
         self.nextButton = QPushButton("Ready!")
@@ -32,6 +35,7 @@ class PerkSelectionView(QWidget):
         self.mainLayout.addWidget(self.countersTip, 2, 2, 1, 1)
         self.mainLayout.addWidget(offensiveLayoutWidget, 3, 1, 2, 3)
         self.mainLayout.addWidget(defensiveLayoutWidget, 5, 1, 2, 3)
+        self.mainLayout.addWidget(self.nextButton, 6, 4, 1, 1)
         
 
         self.setLayout(self.mainLayout)
@@ -126,6 +130,11 @@ class PerkSelectionView(QWidget):
     #Upon approving selection, will pass the data down to logic so it can be remembered and used.
     def __OnPerksApproved(self):
         self.__perkSelectionListener(self.selectedOffensivePerk, self.selectedDefPerk)
+
+    # Resets the state of the view by clicking the selected by default controls
+    def ResetState(self):
+        self.artilleryEffortRadioButton.click()
+        self.fusionReactorsOverloadRadioButton.click()
 
     #Used to register a single listener for the perk selection confirmation event.
     #The event handler must accept two values as params:

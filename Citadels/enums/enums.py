@@ -15,14 +15,20 @@ class ViewTypeLocal(IntEnum):
     LOCAL_TURN_P2 = 7
 
 
+class MatchEnds(IntEnum):
+    MATCH_END_DRAW = 8
+    MATCH_END_P1_VICTORY = 9
+    MATCH_END_P2_VICTORY = 10
+
+
 class ViewTypeLan(IntEnum):
-    HOST_CONNECTION_AWAIT = 8
-    CLIENT_CONNECTING = 9
-    PERK_SELECT_P1 = 10
-    PERK_SELECT_P2 = 11
-    AWAIT_TURN = 12
-    LAN_TURN_P1 = 13
-    LAN_TURN_P2 = 14
+    HOST_CONNECTION_AWAIT = 11
+    CLIENT_CONNECTING = 12
+    PERK_SELECT_P1 = 13
+    PERK_SELECT_P2 = 14
+    AWAIT_TURN = 15
+    LAN_TURN_P1 = 16
+    LAN_TURN_P2 = 17
 
 
 
