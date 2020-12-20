@@ -16,3 +16,8 @@ ViewManager doesn't know about MatchControllers.
 
 GameControllers doesn't know about MainWindow. These communicate with MainWindow via Events.
 MainWindow does know about GameControllers.
+
+
+# https://www.tutorialspoint.com/pyqt/pyqt_qstackedwidget.htm
+# https://realpython.com/python-sockets/
+# https://python101.readthedocs.io/pl/latest/pyqt/kalkulator/index.html

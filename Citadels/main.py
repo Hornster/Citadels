@@ -8,9 +8,6 @@ from logics.controllers.MenuController import MenuController
 import sys
 
 
-# https://www.tutorialspoint.com/pyqt/pyqt_qstackedwidget.htm
-# https://realpython.com/python-sockets/
-# https://python101.readthedocs.io/pl/latest/pyqt/kalkulator/index.html
 from logics.controllers.playerDataController import PlayerDataController
 from logics.controllers.viewsCreator import ViewsCreator
 from logics.turnAnalyzer import TurnAnalyzer
