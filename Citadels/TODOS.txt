@@ -1,8 +1,8 @@
 #TODO: Prepare such controller for every view.      done
 #TODO: Prepare stack widget switching               done
 #TODO: Prepare proper widgets calling and switching done
-#TODO: View controllers for turns shall register for health change event
-#TODO: Match controller upon seeing switching window to P1Turn shall check victory conditions and call calculations
+#TODO: View controllers for turns shall register for health change event done
+#TODO: Match controller upon seeing switching window to P1Turn shall check victory conditions and call calculations done
 
 #Notes:
 ViewControllers know about their views. They communicate directly with them.
@@ -17,6 +17,13 @@ ViewManager doesn't know about MatchControllers.
 GameControllers doesn't know about MainWindow. These communicate with MainWindow via Events.
 MainWindow does know about GameControllers.
 
+
+# Report:
+Some screenshots of the gameplay
+title page
+OirPOS: Small documentation
+-describe what each class does
+-documentation both in git and report
 
 # https://www.tutorialspoint.com/pyqt/pyqt_qstackedwidget.htm
 # https://realpython.com/python-sockets/

@@ -77,3 +77,19 @@ class TurnResultEnum(IntEnum):
 class PlayersEnum(IntEnum):
     P1 = 0
     P2 = 1
+
+
+# What messages the server can send
+class ServerMsgType(IntEnum):
+    ConnEstablished = 0
+    TurnResults = 1
+    GameResult = 2
+    ConnectionDown = 3
+    StartGame = 4
+
+
+# What messages the client can send
+class ClientMsgType(IntEnum):
+    SelectedPerks = 0
+    SelectedActions = 1
+    ConnectionDown = 2
