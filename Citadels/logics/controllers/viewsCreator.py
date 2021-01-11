@@ -1,23 +1,22 @@
-from ViewManager import ViewManager
-from data.labels import Labels
+from logics.ViewManager import ViewManager
 from enums.enums import PlayersEnum, TurnResultEnum, ViewTypeGameplaySelection
 from logics.controllers.LanMatchController import LanMatchController
 from logics.controllers.LocalMatchController import LocalMatchController
 from logics.controllers.MenuController import MenuController
-from logics.controllers.viewControllers.AftermatchViewController import AftermatchViewController
-from logics.controllers.viewControllers.gameModeSelectViewController import GameModeSelectViewController
-from logics.controllers.viewControllers.hostModeIniViewController import HostModeIniViewController
-from logics.controllers.viewControllers.joinGameViewController import JoinGameViewController
-from logics.controllers.viewControllers.lanModeSelectionViewController import LanModeSelectionViewController
-from logics.controllers.viewControllers.perkSelectionController import PerkSelectionController
-from logics.controllers.viewControllers.turnController import TurnController
-from logics.views.stacks.TurnView import TurnView
-from logics.views.stacks.aftermatchView import AftermatchView
-from logics.views.stacks.gameplaySelection.gameModeSelectView import GameModeSelectView
-from logics.views.stacks.gameplaySelection.hostModeIniView import HostModeIniView
-from logics.views.stacks.gameplaySelection.joinGameView import JoinGameView
-from logics.views.stacks.gameplaySelection.lanModeSelection import LanModeSelection
-from logics.views.stacks.perkSelectionView import PerkSelectionView
+from logics.viewControllers.AftermatchViewController import AftermatchViewController
+from logics.viewControllers.gameModeSelectViewController import GameModeSelectViewController
+from logics.viewControllers.hostModeIniViewController import HostModeIniViewController
+from logics.viewControllers.joinGameViewController import JoinGameViewController
+from logics.viewControllers.lanModeSelectionViewController import LanModeSelectionViewController
+from logics.viewControllers.perkSelectionController import PerkSelectionController
+from logics.viewControllers.turnController import TurnController
+from logics.views.gameplay.TurnView import TurnView
+from logics.views.gameplay.aftermatchView import AftermatchView
+from logics.views.gameplaySelection.gameModeSelectView import GameModeSelectView
+from logics.views.gameplaySelection.hostModeIniView import HostModeIniView
+from logics.views.gameplaySelection.joinGameView import JoinGameView
+from logics.views.gameplaySelection.lanModeSelection import LanModeSelection
+from logics.views.gameplay.perkSelectionView import PerkSelectionView
 
 
 class ViewsCreator():

@@ -1,6 +1,6 @@
-from ViewManager import ViewManager
+from logics.ViewManager import ViewManager
 from enums.enums import PlayersEnum, OffensivePerkEnum, DefensivePerkEnum, DefensiveActionEnum, OffensiveActionEnum, \
-    ViewTypeLocal, TurnResultEnum, ViewTypeGameplaySelection, MatchEnds
+    ViewTypeLocal, TurnResultEnum, MatchEnds
 from logics.controllers.playerDataController import PlayerDataController
 from logics.turnAnalyzer import TurnAnalyzer
 

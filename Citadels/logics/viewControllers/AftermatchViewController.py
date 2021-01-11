@@ -1,4 +1,4 @@
-from logics.views.stacks.aftermatchView import AftermatchView
+from logics.views.gameplay.aftermatchView import AftermatchView
 
 
 class AftermatchViewController():

@@ -1,6 +1,6 @@
 from enums.enums import PlayersEnum, OffensiveActionEnum, DefensiveActionEnum
 from logics.controllers.playerDataController import PlayerDataController
-from logics.views.stacks.TurnView import TurnView
+from logics.views.gameplay import TurnView
 
 class TurnController():
     def __init__(self, whatPlayer: PlayersEnum, myView: TurnView, matchController, nextView):

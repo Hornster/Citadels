@@ -1,8 +1,6 @@
 
 from enums.enums import OffensivePerkEnum, DefensivePerkEnum, PlayersEnum
-from logics.controllers.viewControllers.PerkViewControllerBase import PerkViewControllerBase
-from logics.views.stacks.perkSelectionView import PerkSelectionView
-from logics.controllers.LocalMatchController import LocalMatchController
+from logics.views.gameplay.perkSelectionView import PerkSelectionView
 
 
 class PerkSelectionController():

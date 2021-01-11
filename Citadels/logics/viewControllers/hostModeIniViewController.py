@@ -1,4 +1,4 @@
-from logics.views.stacks.gameplaySelection.hostModeIniView import HostModeIniView
+from logics.views.gameplaySelection.hostModeIniView import HostModeIniView
 
 
 class HostModeIniViewController():

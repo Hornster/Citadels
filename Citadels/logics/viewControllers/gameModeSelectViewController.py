@@ -1,12 +1,11 @@
-from logics.views.stacks.gameplaySelection.lanModeSelection import LanModeSelection
+from logics.views.gameplaySelection.gameModeSelectView import GameModeSelectView
 
 
-class LanModeSelectionViewController():
-    def __init__(self, myView: LanModeSelection, menuController):
+class GameModeSelectViewController():
+    def __init__(self, myView: GameModeSelectView, menuController):
         self.myView = myView
         self.myView.RegisterViewSwitchHandler(self.ChangeView)
         self.menuController = menuController
-
 
     def ChangeView(self, newView):
         self.menuController.ChangeView(newView)

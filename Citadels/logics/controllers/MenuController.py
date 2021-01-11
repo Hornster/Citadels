@@ -1,4 +1,4 @@
-from ViewManager import ViewManager
+from logics.ViewManager import ViewManager
 
 class MenuController():
     menuControllerInstance = 0
