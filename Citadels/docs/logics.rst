@@ -13,9 +13,9 @@ Name                                      Description
 `views`_                                  Views used in the game.
 ========================================= ===============================================================================================
 
-.. _`logics/controllers`: logics/controllers.rst
-.. _`logics/viewControllers`: logics/viewControllers.rst
-.. _`logics/views/gameplay`: logics/views
+.. _`controllers`: logics/controllers.rst
+.. _`viewControllers`: logics/viewControllers.rst
+.. _`views`: logics/views
 
 MainWindow class
 ----------------
