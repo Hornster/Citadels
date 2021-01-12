@@ -26,7 +26,3 @@ Name                                Description
 .. _`logics/viewControllers`: logics/viewControllers.rst
 .. _`logics/views/gameplay`: logics/views/gameplay.rst
 .. _`logics/views/gameplaySelection`: logics/views/gameplaySelection.rst
-
-`This is link`_
-
-.. _`This is link`: <Citadels/Citadels/docs>
