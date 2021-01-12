@@ -67,3 +67,5 @@ RegisterOnDamageTakenHandler  `PlayersEnum`_, Func(float, float)      Registers 
 ResetPlayers                  \-                                      Resets the state of the players.
 GetInstance                   \-                                      Returns instance of the class.
 ============================= ======================================= ===============================================================================================
+
+
