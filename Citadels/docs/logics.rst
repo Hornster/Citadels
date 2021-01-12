@@ -46,6 +46,25 @@ CalculateTurn            `PlayerData`_, `PlayerData`_ Calculates results of the 
 .. _`PlayerData`: data.rst
 .. _`TurnResultEnum`: enums.rst
 
+ViewCreator class
+-----------------
+Creates views for controllers.
+
+======================== ============================ ===============================================================================================
+Name                      Args                        Description
+======================== ============================ ===============================================================================================
+GetPerksView             `PlayersEnum`_, int, bool    Returns a new perk selection view for player of given ID(Players enum).
+GetTurnsView             `PlayersEnum`_, int, bool    Returns a new turn view for player of given ID(Players enum).
+GetGameModeSelectView    \-                           Returns new game mode selection view.
+GetHostModeIniView       \-                           Returns new LAN host mode selection view.
+GetJoinGameView          \-                           Returns new LAN game joining view.
+GetLanModeSelectionView  \-                           Returns new LAN mode selection view.
+GetMatchEndView          `TurnResultEnum`_            Returns a new match end view, dependant on passed argument.
+======================== ============================ ===============================================================================================
+
+
+.. _`PlayersEnum`: enums.rst
+
 ViewManager class
 -----------------
 Used to switch through available views. Inherits from `QStackedWidget`_.
