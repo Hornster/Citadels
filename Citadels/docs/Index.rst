@@ -9,16 +9,17 @@ List of packages can be found below:
 =================================== =========================================================
 Name                                Description
 =================================== =========================================================
-[data][1]                           Label constants and data structures.
-[enums][2]                          Enums used in the project
-[logics][3]                         Controllers and views packages. Main, TurnAnalyzer 
+`data`_                             Label constants and data structures.
+`enums`_                            Enums used in the project
+`logics`_                           Controllers and views packages. Main, TurnAnalyzer 
                                     and ViewManager classes.
-[logics/controllers][4]             Gameplay controllers - the actual game calculations.
-[logics/viewControllers][5]         Views controllers - initialization of views, data passing to controllers.
-[logics/views/gameplay][6]          Views used during match.
-[logics/views/gameplaySelection][7] Views used in selection of gameplay type.
+`logics/controllers`_               Gameplay controllers - the actual game calculations.
+`logics/viewControllers`_           Views controllers - initialization of views, data passing to controllers.
+`logics/views/gameplay`_            Views used during match.
+`logics/views/gameplaySelection`_   Views used in selection of gameplay type.
 =================================== =========================================================
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: https://github.com/Hornster/Citadels/edit/master/Citadels/docs/Index.rst
 
-`This is link <https://github.com/Hornster/Citadels/edit/master/Citadels/docs/Index.rst>` _
+
+`This is link`_
+
+.. _`This is link`: <Citadels/Citadels/docs>
