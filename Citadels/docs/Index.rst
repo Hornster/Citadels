@@ -19,6 +19,7 @@ Name                                Description
 `logics/views/gameplaySelection`_   Views used in selection of gameplay type.
 =================================== =========================================================
 
+.. _`data`: data.rst
 
 `This is link`_
 
