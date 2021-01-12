@@ -20,6 +20,12 @@ Name                                Description
 =================================== =========================================================
 
 .. _`data`: data.rst
+.. _`enums`: enums.rst
+.. _`logics`: logics.rst
+.. _`logics/controllers`: logics/controllers.rst
+.. _`logics/viewControllers`: logics/viewControllers.rst
+.. _`logics/views/gameplay`: logics/views/gameplay.rst
+.. _`logics/views/gameplaySelection`: logics/views/gameplaySelection.rst
 
 `This is link`_
 
