@@ -15,7 +15,7 @@ Stores current state of the player during the game. Arguments of members are pro
 Name                      Args                  Description
 ======================== ===================== ===============================================================================================
 TakeDamage               float                 Registers damaged dealt to the player passed in the argument. calls **onHealthChanged** event.
-Reset                    \-                     Resets the state of the player.
+Reset                    \-                    Resets the state of the player.
 RegisterOnHealthChanged  func(float)           Registers handler of health change event. Handler needs to have one argument of **float** type.
 ======================== ===================== ===============================================================================================
 
@@ -28,4 +28,6 @@ Name                      Args                  Description
 ======================== ===================== ===============================================================================================
 GetPlayerName            `PlayersEnum`_        Returns name of a player specified by provided enum value.
 ======================== ===================== ===============================================================================================
-.. _`PlayersEnum` Citadels/Citadels/enums
+
+
+.. _`PlayersEnum`: enums.rst
