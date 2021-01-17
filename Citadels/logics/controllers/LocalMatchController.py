@@ -22,12 +22,12 @@ class LocalMatchController():
         playerDataController.SetPlayerActions(whatPlayer, offensiveAction, defensiveAction)
 
     def TurnFinished(self):
-        self.PerformTurnCalculations()
+        self.__PerformTurnCalculations()
 
     def ChangeView(self, newView):
         self.viewManager.ChangeView(newView)
 
-    def PerformTurnCalculations(self):
+    def __PerformTurnCalculations(self):
         playerDataController = PlayerDataController.GetInstance()
         turnAnalyzer = TurnAnalyzer.GetInstance()
 

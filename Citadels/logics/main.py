@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QApplication, QTabWidget, QWidget, QShortcut, QMainWindow, QHBoxLayout, QLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
 from ViewManager import ViewManager
-from enums.enums import ViewTypeLocal, ViewTypeLan, ViewManagerTypeEnum, ViewTypeGameplaySelection, PlayersEnum, \
+from enums.enums import ViewTypeLocal, ViewManagerTypeEnum, ViewTypeGameplaySelection, PlayersEnum, \
     TurnResultEnum
 from logics.controllers.LanMatchController import LanMatchController
 from logics.controllers.LocalMatchController import LocalMatchController
@@ -9,7 +9,7 @@ import sys
 
 
 from logics.controllers.playerDataController import PlayerDataController
-from logics.controllers.viewsCreator import ViewsCreator
+from logics.viewsCreator import ViewsCreator
 from logics.turnAnalyzer import TurnAnalyzer
 
 

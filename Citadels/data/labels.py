@@ -6,9 +6,9 @@ class Labels:
     ARTILLERY_EFFORT = "Artillery Effort"
     SIEGE_FLEET_EFFORT = "Siege Fleet Effort"
     FIGHTER_FLEET_EFFORT = "Fighter Fleet Effort"
-    ARTILLERY_EFFORT_DETAILS = "+20% Thor Hammer Power, \n -20% Fighter Fleet Power"
+    ARTILLERY_EFFORT_DETAILS = "+20% Thor Hammer Power, \n -20% Siege Fleet Power"
     SIEGE_FLEET_EFFORT_DETAILS = "+20% Siege Fleet Power, \n -20% Fighter Fleet Power"
-    FIGHTER_FLEET_EFFORT_DETAILS = "+20% Fighter Fleet Power, \n -20% Fighter Fleet Power"
+    FIGHTER_FLEET_EFFORT_DETAILS = "+20% Fighter Fleet Power, \n -20% Thor Hammer Power"
     #Offense skills
     ARTILLERY = "Thor Hammer"
     SIEGE_FLEET = "Siege Fleet"
